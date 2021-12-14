@@ -130,31 +130,32 @@ call plug#begin('~/.vim/plugged')
 
 	" Deoplete, specific for Vim8
 	if !has("nvim")
-		 Plug 'roxma/nvim-yarp'
-		 Plug 'roxma/vim-hug-neovim-rpc'
+		 " Plug 'roxma/nvim-yarp'
+		 " Plug 'roxma/vim-hug-neovim-rpc'
 	endif
 
 	" Autocomplete
-	Plug 'Shougo/deoplete.nvim', { 'commit': '17ffeb9' }
-	Plug 'Shougo/neosnippet.vim', { 'commit': '037b7a7' }
-	Plug 'Shougo/neosnippet-snippets'
-	Plug 'Shougo/context_filetype.vim'
-	Plug 'ervandew/supertab'
+	" Plug 'Shougo/deoplete.nvim', { 'commit': '17ffeb9' }
+	" Plug 'Shougo/neosnippet.vim', { 'commit': '037b7a7' }
+	" Plug 'Shougo/neosnippet-snippets'
+	" Plug 'Shougo/context_filetype.vim'
+	" Plug 'ervandew/supertab'
 
 	" C/C++ support
-	Plug 'deoplete-plugins/deoplete-clang', { 'commit': '30f17cb' }
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	" Plug 'deoplete-plugins/deoplete-clang', { 'commit': '30f17cb' }
+    " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'Valloric/YouCompleteMe'
 
 	" Go support
 	Plug 'fatih/vim-go', { 'tag': 'v1.19' }
 	Plug 'nsf/gocode', { 'rtp': 'vim', 'do': '~/.vim/plugged/gocode/vim/symlink.sh' }
-	Plug 'deoplete-plugins/deoplete-go', { 'commit': 'fa73f06'}
+	" Plug 'deoplete-plugins/deoplete-go', { 'commit': 'fa73f06'}
 
 	" Perl support
 	Plug 'c9s/perlomni.vim'
 
 	" Python support
-	Plug 'deoplete-plugins/deoplete-jedi', { 'commit': '46121d9' }
+	" Plug 'deoplete-plugins/deoplete-jedi', { 'commit': '46121d9' }
 
 	" Ruby support
 	Plug 'vim-ruby/vim-ruby'
@@ -172,11 +173,11 @@ call plug#begin('~/.vim/plugged')
 	Plug 'racer-rust/vim-racer'
 
 	" Zsh support
-	Plug 'deoplete-plugins/deoplete-zsh', { 'commit': '12141ad' }
+	" Plug 'deoplete-plugins/deoplete-zsh', { 'commit': '12141ad' }
 
 	" JavaScript support
 	Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-	Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
+	" Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
 	Plug 'othree/jspc.vim'
 	Plug 'maksimr/vim-jsbeautify'
 
@@ -427,7 +428,7 @@ autocmd CompleteDone * if pumvisible() == 0 | pclose | endif
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#omni#functions    = {}
-call deoplete#custom#option('auto_complete_delay', 250)
+" call deoplete#custom#option('auto_complete_delay', 250)
 
 inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
@@ -446,8 +447,8 @@ let g:deoplete#omni#functions.javascript = [
 	\ ]
 
 " Clang autocompletion
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-4.0/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
+" let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-4.0/lib/libclang.so'
+" let g:deoplete#sources#clang#clang_header = '/usr/lib/clang'
 
 " --- Snippets ---
 " Neosnippet settings
@@ -469,9 +470,9 @@ if has('conceal')
 	nnoremap <silent> com :set conceallevel=3<CR>:set concealcursor=niv<CR>
 endif
 
-augroup all
-	autocmd InsertLeave * NeoSnippetClearMarkers
-augroup end
+" augroup all
+"	autocmd InsertLeave * NeoSnippetClearMarkers
+" augroup end
 
 " --- Edition ---
 " Easy align settings
@@ -523,8 +524,8 @@ autocmd FileType markdown,liquid let b:surround_{char2nr('j')} = "!\[\r\]
 			\\(/images/\){: .align-}"
 
 " Caps Lock settings
-imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
-cmap <silent> <C-l> <Plug>CapsLockToggle
+" imap <expr><C-l> deoplete#smart_close_popup()."\<Plug>CapsLockToggle"
+" cmap <silent> <C-l> <Plug>CapsLockToggle
 
 " Expand region settings
 vmap v <Plug>(expand_region_expand)
@@ -1031,10 +1032,10 @@ inoremap <C-a> <C-O>0
 inoremap <C-e> <C-O>$
 
 " Moves the cursor back one character
-inoremap <expr><C-b> deoplete#smart_close_popup()."\<Left>"
+" inoremap <expr><C-b> deoplete#smart_close_popup()."\<Left>"
 
 " Moves the cursor forward one character
-inoremap <expr><C-f> deoplete#smart_close_popup()."\<Right>"
+" inoremap <expr><C-f> deoplete#smart_close_popup()."\<Right>"
 
 " Remove one character
 inoremap <C-d> <DEL>

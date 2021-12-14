@@ -125,9 +125,19 @@ function set_prompt_string ()
     local join="──"
     local wdir="$base[$end$id$wdir$end$base]$end"
     local brch="$bcol$(parse_git_branch)$base$end"
-    local tail="$col_lb"" $sym""$col_lb""$sym""$col_lb""$sym""\[\033[0m\]"' '
+    local tail="$col_lb""$sym""$col_lb""$sym""$col_lb""$sym""\[\033[0m\]"
+
+    local hi='┌──'
+    local lo='└─'
 
     prompt_string="$user$join$wdir$brch$tail"
+
+    case "$PROMPT_ALTERNATIVE" in
+        twoline)
+            prompt_string="$hi$user$join$wdir$brch\n$lo$tail ";;
+        oneline)
+            prompt_string="$user$join$wdir$brch $tail ";;
+    esac
 
     #prompt_string="$base"'('"$id"'\u${prompt_symbol}\h'"$base""$join""$id$wdir$base"']'"$col_lb"" $sym""$col_lb""$sym""$col_lb""$sym""\[\033[0m\]"' '
     #prompt_string="\e[1;48;5;6m \e[0m\e[1;38;5;234;48;5;8m \w \e[0m\n\\[\e[1;32;48;5;6m\]   \[\e[49;21;38;5;6m\]\[\e[m\] "
